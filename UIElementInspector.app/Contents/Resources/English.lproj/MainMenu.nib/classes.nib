@@ -1,0 +1,49 @@
+{
+    IBClasses = (
+        {
+            ACTIONS = {
+                interactWithCurrentUIElement = id; 
+                interactWithParentOfLockedUIElement = id; 
+                interactWithUIElement = id; 
+                refreshInteractionUIElement = id; 
+                takeHighlightLockedUIElementValue = id; 
+                unlockCurrentUIElement = id; 
+            }; 
+            CLASS = AppShell; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "_inspectorWindow" = InspectorWindow; 
+                "_interactionWindow" = InteractionWindow; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {fontSizeSelected = id; }; 
+            CLASS = InspectorWindow; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {"_consoleView" = NSTextView; }; 
+            SUPERCLASS = NSPanel; 
+        }, 
+        {
+            ACTIONS = {
+                actionSelected = id; 
+                attributeSelected = id; 
+                performAction = id; 
+                setAttributeValue = id; 
+            }; 
+            CLASS = InteractionWindow; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                "_actionsPopup" = NSPopUpButton; 
+                "_attributeValueTextField" = NSTextField; 
+                "_attributesPopup" = NSPopUpButton; 
+                "_elementsPopup" = NSPopUpButton; 
+                "_performActionButton" = NSButton; 
+                "_setAttributeButton" = NSButton; 
+            }; 
+            SUPERCLASS = NSPanel; 
+        }
+    ); 
+    IBVersion = 1; 
+}
