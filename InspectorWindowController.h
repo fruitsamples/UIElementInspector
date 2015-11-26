@@ -1,7 +1,6 @@
 /*
-     File: main.m 
- Abstract: This is the main source file for UIElementInspector.
- This sample demonstrates the Accessibility API introduced in Mac OS X 10.2.
+     File: InspectorWindowController.h 
+ Abstract: The main Inspector window controller.
   
   Version: 1.4 
   
@@ -49,7 +48,14 @@
 
 #import <Cocoa/Cocoa.h>
 
-int main(int argc, const char *argv[])
-{
-    return NSApplicationMain(argc, argv);
+@interface InspectorWindowController : NSWindowController {
+    IBOutlet NSTextView* _consoleView;
 }
+
+- (void)updateInfoForUIElement:(AXUIElementRef)uiElement;
+
+- (void)indicateUIElementIsLocked:(BOOL)flag;
+
+- (IBAction)fontSizeSelected:(id)sender;
+
+@end

@@ -1,6 +1,9 @@
 /*
-     File: main.m 
- Abstract: This is the main source file for UIElementInspector.
+     File: AppDelegate.h 
+ Abstract: This is the header for the AppDelegate class that handles the bulk of the real
+ accessibility work of finding out what is under the cursor.  The InspectorWindowController and
+ InteractionWindowController classes handle the display and interaction with the accessibility information.
+ 
  This sample demonstrates the Accessibility API introduced in Mac OS X 10.2.
   
   Version: 1.4 
@@ -48,8 +51,37 @@
  */
 
 #import <Cocoa/Cocoa.h>
+#import <HIServices/Accessibility.h>
 
-int main(int argc, const char *argv[])
-{
-    return NSApplicationMain(argc, argv);
+@class InspectorWindowController, InteractionWindowController, DescriptionInspectorWindowController, HighlightWindowController;
+
+@interface AppDelegate : NSObject {
+
+    InspectorWindowController		    *_inspectorWindowController;
+    DescriptionInspectorWindowController    *_descriptionInspectorWindowController;
+    InteractionWindowController		    *_interactionWindowController;
+    HighlightWindowController		    *_highlightWindowController;
+
+    AXUIElementRef			    _systemWideElement;
+    NSPoint				    _lastMousePoint;
+
+    AXUIElementRef			    _currentUIElement;
+    BOOL				    _currentlyInteracting;
+    BOOL				    _highlightLockedUIElement;
 }
+
+- (void)setCurrentUIElement:(AXUIElementRef)uiElement;
+- (AXUIElementRef)currentUIElement;
+
+- (void)performTimerBasedUpdate;
+- (void)updateCurrentUIElement;
+
+- (IBAction)lockCurrentUIElement:(id)sender;
+- (void)unlockCurrentUIElement:(id)sender;
+
+- (IBAction)navigateToUIElement:(id)sender;
+- (IBAction)refreshInteractionUIElement:(id)sender;
+
+- (void)toggleHighlightWindow:(id)sender;
+
+@end

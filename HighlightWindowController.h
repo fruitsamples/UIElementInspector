@@ -1,7 +1,6 @@
 /*
-     File: main.m 
- Abstract: This is the main source file for UIElementInspector.
- This sample demonstrates the Accessibility API introduced in Mac OS X 10.2.
+     File: HighlightWindowController.h 
+ Abstract: The Highlight window controller.
   
   Version: 1.4 
   
@@ -49,7 +48,10 @@
 
 #import <Cocoa/Cocoa.h>
 
-int main(int argc, const char *argv[])
-{
-    return NSApplicationMain(argc, argv);
-}
+@interface HighlightWindowController : NSWindowController <NSWindowDelegate> {}
+
+- (id)initHighlightWindowController;
+
+- (void)setHighlightFrame:(NSRect)frame animate:(BOOL)flag;
+
+@end

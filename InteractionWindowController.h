@@ -1,7 +1,6 @@
 /*
-     File: main.m 
- Abstract: This is the main source file for UIElementInspector.
- This sample demonstrates the Accessibility API introduced in Mac OS X 10.2.
+     File: InteractionWindowController.h 
+ Abstract: The Interaction window controller.
   
   Version: 1.4 
   
@@ -49,7 +48,23 @@
 
 #import <Cocoa/Cocoa.h>
 
-int main(int argc, const char *argv[])
-{
-    return NSApplicationMain(argc, argv);
+
+@interface InteractionWindowController : NSWindowController {
+
+    IBOutlet NSPopUpButton *	_actionsPopup;
+    IBOutlet NSPopUpButton *	_attributesPopup;
+    IBOutlet NSPopUpButton *	_elementsPopup;
+    IBOutlet NSTextField *	_attributeValueTextField;
+    IBOutlet NSButton *		_setAttributeButton;
+    IBOutlet NSButton *		_performActionButton;
+    
 }
+
+- (void)interactWithUIElement:(AXUIElementRef)element;
+
+- (IBAction)attributeSelected:(id)sender;
+- (IBAction)setAttributeValue:(id)sender;
+- (IBAction)actionSelected:(id)sender;
+- (IBAction)performAction:(id)sender;
+
+@end
